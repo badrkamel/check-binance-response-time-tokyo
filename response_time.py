@@ -1,3 +1,4 @@
+"""
 import requests
 
 url = "https://api.binance.com/api/v1/klines"
@@ -8,4 +9,12 @@ params = {
 }
 
 response = requests.get(url, params=params)
+print(response.elapsed.total_seconds())
+"""
+
+import requests
+
+url = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
+
+response = requests.get(url)
 print(response.elapsed.total_seconds())
