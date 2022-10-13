@@ -1,4 +1,5 @@
 import aiohttp
+from time import sleep
 from fake_headers import Headers
 from asyncio import get_event_loop
 
@@ -11,7 +12,7 @@ header = Headers(
 )
 
 async def run_app():
-    for i in range(10000):
+    for i in range(1000):
 
         async with aiohttp.ClientSession() as session:
             async with session.get(f'{url}?pageSize={i}', headers=header.generate()) as response:
@@ -19,6 +20,7 @@ async def run_app():
                 # print(response.)
                 # print(response.headers)
                 print(response.headers['X-Cache'])
+                sleep(.2)
 
 
 get_event_loop().run_until_complete(run_app())
